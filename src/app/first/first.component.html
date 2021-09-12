@@ -1,0 +1,16 @@
+<h3>{{name}}</h3>
+<p>{{description}} / {{category}}</p>
+<strong>{{price | currency: "UAH"}}</strong>
+<h4>Colors:</h4>
+<ul>
+    <li *ngFor="let color of colors;">
+        {{color}}
+    </li>
+</ul>
+<h4>Memory:</h4>
+<ul>
+    <li *ngFor="let gb of memory;">
+        {{gb}}
+    </li>
+</ul>
+<div *ngIf="isAvailable">Available</div>
