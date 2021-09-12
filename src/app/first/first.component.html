@@ -1,6 +1,9 @@
 <h3>{{name}}</h3>
 <p>{{description}} / {{category}}</p>
-<strong>{{price | currency: "UAH"}}</strong>
+<div>
+    <strong>{{price | currency: "UAH"}} </strong>
+    <span *ngIf="isAvailable">Available</span>
+</div> 
 <h4>Colors:</h4>
 <ul>
     <li *ngFor="let color of colors;">
@@ -13,4 +16,3 @@
         {{gb}}
     </li>
 </ul>
-<div *ngIf="isAvailable">Available</div>
