@@ -1,1 +1,16 @@
-<app-product></app-product>
+<h1>Products:</h1>
+
+<ul>
+    <li *ngFor="let product of products">
+        <strong>{{product.name}}</strong>
+        <div>
+            {{product.description}}
+        </div>
+        <div>
+            {{product.price | currency:'UAH'}}
+        </div>
+        <div *ngIf="product.isAvailable">
+            <small>Available</small>
+        </div>
+    </li>
+</ul> 
