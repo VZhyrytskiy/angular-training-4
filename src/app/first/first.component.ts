@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 enum Category {
-  NanoSim = 'NanoSIM',
-  ESim = 'ESim'
+  iPhone = 'iPhone',
+  iPad = 'iPad'
 }
 
 @Component({
@@ -17,7 +17,7 @@ export class FirstComponent implements OnInit {
   category!: Category;
   isAvailable!: boolean;
   colors: String[] = ['Graphite', 'Pacific Blue', 'Silver', 'Gold'];
-  memory: Array<Number> = [128, 256, 512];
+  memory: Number[] = [128, 256, 512];
 
   constructor() { }
 
@@ -25,7 +25,7 @@ export class FirstComponent implements OnInit {
     this.name = 'Apple iPhone 12 Pro Max';
     this.description = 'Wi‑Fi 802.11ax (Wi-Fi 6), MIMO 2x2, Bluetooth 5.0, NFC';
     this.price = 50499;
-    this.category = Category.NanoSim;
+    this.category = Category.iPhone;
     this.isAvailable = true;
   }
 

@@ -1,0 +1,9 @@
+<h1>Goods in cart:</h1>
+<div *ngIf="cartProductsList; else noGoods;">
+    <div *ngFor="let product of cartProductsList; index as i; trackBy:identify">
+        {{i+1   }}.{{product.name}}
+    </div>
+</div>
+<ng-template #noGoods>
+    <p>The cart is empty.</p>
+</ng-template>

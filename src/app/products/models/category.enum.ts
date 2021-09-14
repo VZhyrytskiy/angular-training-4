@@ -1,4 +1,4 @@
 export enum Category {
-    NanoSim = 'NanoSIM',
-    ESim = 'ESim'
+    iPhone = 'iPhone',
+    iPad = 'iPad'
 }
