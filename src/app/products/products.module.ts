@@ -12,6 +12,7 @@ import { ProductsListComponent } from './components/products-list/products-list.
     CommonModule,
     ProductsRoutingModule
   ],
+  // надо ли оба компонента делать публичными?
   exports: [ProductComponent, ProductsListComponent]
 })
 export class ProductsModule { }
