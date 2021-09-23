@@ -10,7 +10,7 @@ import { CartService } from '../../services/cart.service';
 export class CartListComponent implements OnInit {
   cartProductsList?: ProductModel[];
 
-  constructor(public cartService: CartService) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     let rand = [true, false][Math.floor(Math.random()*2)];
@@ -18,6 +18,6 @@ export class CartListComponent implements OnInit {
   }
 
   identify(index: number, item: { name: string }) {
-    return item.name; 
+    return item.name;
   }
 }
