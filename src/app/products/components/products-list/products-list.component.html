@@ -5,31 +5,7 @@
       class="col-sm-12 col-md-6 col-lg-4 product-wrapper"
       *ngFor="let product of products"
     >
-      <div class="card h-100">
-        <div class="card-header">
-          <h2 class="card-title">{{ product.name }}</h2>
-        </div>
-        <div class="card-body">
-          <p class="card-text text-secondary">
-            {{ product.description }}
-          </p>
-          <div class="mb-2 fw-bold text-muted">
-            {{ product.price | currency: "UAH" }}
-          </div>
-          <div *ngIf="product.isAvailable; else isUnavailable">
-            <span class="badge bg-success">
-              <i class="bi bi-check-circle me-1"></i>
-              Available
-            </span>
-          </div>
-          <ng-template #isUnavailable>
-            <span class="badge bg-secondary">
-              <i class="bi bi-x-circle me-1"></i>
-              Unavailable
-            </span>
-          </ng-template>
-        </div>
-      </div>
+      <app-product [product]="product"></app-product>
     </div>
   </div>
 </section>

@@ -10,7 +10,7 @@ export class ProductsService {
   productsList: ProductModel[] = [
     {
       name: 'Apple iPhone 12 Pro Max',
-      description: 'Lorem ipsum dolor sit amet',
+      description: '2020 Wi-Fi 256GB Silver (MXAU2)',
       price: 50_000,
       category: Category.iPhone,
       isAvailable: true,
@@ -19,7 +19,7 @@ export class ProductsService {
     },
     {
       name: 'Apple iPhone 12',
-      description: 'Lorem ipsum dolor sit amet',
+      description: '2020 Wi-Fi 256GB Silver (MXAU2)',
       price: 38_000,
       category: Category.iPhone,
       isAvailable: true,
@@ -28,7 +28,7 @@ export class ProductsService {
     },
     {
       name: 'Apple iPhone 8 Plus',
-      description: 'Lorem ipsum dolor sit amet',
+      description: '2020 Wi-Fi 256GB Silver (MXAU2)',
       price: 38_000,
       category: Category.iPhone,
       isAvailable: false,
@@ -49,7 +49,6 @@ export class ProductsService {
   constructor() {}
 
   getProducts() {
-    console.log('Get products');
     return this.productsList;
   }
 }
