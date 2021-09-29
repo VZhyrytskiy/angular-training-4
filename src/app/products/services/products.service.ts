@@ -4,7 +4,7 @@ import { Category } from '../models/category.enum';
 import { ProductModel } from '../models/product.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsService {
   productsList: ProductModel[] = [
@@ -15,7 +15,7 @@ export class ProductsService {
       category: Category.iPhone,
       isAvailable: true,
       colors: ['Graphite', 'Pacific Blue', 'Silver', 'Gold'],
-      memory: [128, 256, 512]
+      memory: [128, 256, 512],
     },
     {
       name: 'Apple iPhone 12',
@@ -24,7 +24,7 @@ export class ProductsService {
       category: Category.iPhone,
       isAvailable: true,
       colors: ['Graphite', 'Pacific Blue', 'Silver', 'Gold', 'Rose Gold'],
-      memory: [128, 256, 512]
+      memory: [128, 256, 512],
     },
     {
       name: 'Apple iPhone 8 Plus',
@@ -33,7 +33,7 @@ export class ProductsService {
       category: Category.iPhone,
       isAvailable: false,
       colors: ['Yellow', 'Red', 'Silver', 'Gold', 'Rose Gold'],
-      memory: [128, 256, 512]
+      memory: [128, 256, 512],
     },
     {
       name: 'Apple iPad Pro 4 12.9',
@@ -42,11 +42,11 @@ export class ProductsService {
       category: Category.iPad,
       isAvailable: true,
       colors: ['Graphite', 'Pacific Blue', 'Silver', 'Gold'],
-      memory: [128, 256, 512]
-    }
+      memory: [128, 256, 512],
+    },
   ];
 
-  constructor() { }
+  constructor() {}
 
   getProducts() {
     console.log('Get products');

@@ -3,7 +3,7 @@ import { Category } from 'src/app/products/models/category.enum';
 import { ProductModel } from 'src/app/products/models/product.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
   cartProductsList: ProductModel[] = [
@@ -14,7 +14,7 @@ export class CartService {
       category: Category.iPhone,
       isAvailable: true,
       colors: ['Graphite', 'Pacific Blue', 'Silver', 'Gold'],
-      memory: [128, 256, 512]
+      memory: [128, 256, 512],
     },
     {
       name: 'Apple iPad Pro 4 12.9',
@@ -23,11 +23,11 @@ export class CartService {
       category: Category.iPad,
       isAvailable: true,
       colors: ['Graphite', 'Pacific Blue', 'Silver', 'Gold'],
-      memory: [128, 256, 512]
-    }
+      memory: [128, 256, 512],
+    },
   ];
 
-  constructor() { }
+  constructor() {}
 
   getCartProducts() {
     return this.cartProductsList;
