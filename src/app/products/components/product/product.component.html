@@ -23,7 +23,11 @@
     </ng-template>
   </div>
   <div class="card-footer">
-    <button class="btn btn-lg btn-primary w-100" (click)="onAddToCart()">
+    <button
+      class="btn btn-lg btn-primary w-100"
+      (click)="onAddToCart()"
+      [disabled]="!product.isAvailable"
+    >
       Add to cart
     </button>
   </div>
