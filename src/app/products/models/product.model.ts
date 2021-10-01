@@ -7,7 +7,7 @@ export class ProductModel implements Product {
   category!: Category;
   isAvailable!: boolean;
   colors: String[] = ['Graphite', 'Pacific Blue', 'Silver', 'Gold'];
-  memory: Array<Number> = [128, 256, 512];
+  memory: Number[] = [128, 256, 512];
 }
 
 export interface Product {
