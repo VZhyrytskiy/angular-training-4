@@ -1,0 +1,9 @@
+<div class="ms-2 me-auto">
+  <div class="fw-bold">{{ product.name }}</div>
+  <div class="text-secondary">{{ product.description }}</div>
+</div>
+<span class="me-auto">
+  <span class="text-muted font-monospace me-2">{{ product.price }} x {{ product.quantity }}</span>
+  <span class="badge bg-success">{{ product.price * product.quantity }}</span>
+</span> 
+<span class="badge bg-secondary rounded-pill">{{ product.quantity }}</span>

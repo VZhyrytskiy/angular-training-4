@@ -31,7 +31,7 @@ export class CartService {
           quantity: 1,
         });
 
-    this.setTotalValues();
+    this.getTotalValues();
   }
 
   getTotalPrice(): number {
@@ -50,7 +50,7 @@ export class CartService {
     return this.totalQuantity;
   }
 
-  setTotalValues(): void {
+  getTotalValues(): void {
     this.getTotalPrice();
     this.getTotalQuantity();
   }

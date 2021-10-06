@@ -1,30 +1,28 @@
 <section class="cart">
   <h1 class="fs-5 text-secondary text-uppercase mb-4">
     <i class="bi bi-basket me-1 text-danger"></i>
-    <span *ngIf="cartProducts.products.length">{{cartProducts.totalQuantity}}</span>
+    <span *ngIf="cartProducts.products.length">{{ cartProducts.totalQuantity }}</span>
     Item(s) in cart
-    <span class="text-success" *ngIf="cartProducts.products.length">Total Price: {{ cartProducts.totalPrice }}</span>
+    <span
+      class="text-success"
+      *ngIf="cartProducts.products.length"
+    >
+      Total Price: 
+      <span class="badge bg-danger rounded-pill">{{ cartProducts.totalPrice }}</span>
+    </span>
   </h1>
   <div *ngIf="cartProducts.products.length; else noGoods">
     <ol class="list-group list-group-numbered">
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-        *ngFor="
-          let product of cartProducts.products;
-          index as i;
-          trackBy: identify;
-          let odd = odd
-        "
-        [class.odd]="odd"
+      <ng-container
+        *ngFor="let product of cartProducts.products;
+                index as i;
+                trackBy: identify;
+                let odd = odd"
       >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">{{ product.name }}</div>
-          <div class="text-secondary">{{ product.description }}</div>
-        </div>
-        <span class="badge bg-primary rounded-pill">{{
-          product.quantity
-        }}</span>
-      </li>
+        <li class="list-group-item d-flex align-items-center" [class.odd]="odd">
+          <app-cart-item [product]="product" class="d-flex flex-fill justify-content-between align-items-center"></app-cart-item>
+        </li>
+      </ng-container>
     </ol>
   </div>
   <ng-template #noGoods>
