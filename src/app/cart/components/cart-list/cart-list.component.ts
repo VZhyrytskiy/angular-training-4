@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CartItemModel } from '../../models/cart-item.model';
 import { CartListModel } from '../../models/cart-list.model';
 import { CartService } from '../../services/cart.service';
 
@@ -23,5 +24,17 @@ export class CartListComponent implements OnInit {
 
   identify(index: number, item: { name: string }): string {
     return item.name;
+  }
+
+  handleIncrease(product: CartItemModel) {
+    this.cartService.increase(product);
+  }
+
+  handleDecrease(product: CartItemModel) {
+    this.cartService.decrease(product);
+  }
+
+  handleDelete(product: CartItemModel) {
+    this.cartService.delete(product);
   }
 }

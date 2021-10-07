@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ProductModel } from 'src/app/products/models/product.model';
+import { CartItemModel } from '../models/cart-item.model';
 import { CartListModel } from '../models/cart-list.model';
 
 @Injectable({
@@ -34,11 +35,28 @@ export class CartService {
     this.getTotalValues();
   }
 
+  increase(product: CartItemModel) {
+    product.quantity ++;
+    this.getTotalValues();
+  }
+
+  decrease(product: CartItemModel) {
+    product.quantity === 1 ? product.quantity = 1 : product.quantity --;
+    this.getTotalValues();
+  }
+
+  delete(product: CartItemModel) {
+    this.cartProducts.products = this.cartProducts.products.filter(
+      el => el.name != product.name
+    );
+    this.getTotalValues();
+  }
+
   getTotalPrice(): number {
     this.totalPrice = this.cartProducts.products.reduce((sum, current) => {
       return current.price * current.quantity + sum;
     }, 0);
-    this.cartProducts.totalQuantity = this.totalQuantity;
+    this.cartProducts.totalPrice = this.totalPrice;
     return this.totalPrice;
   }
 
@@ -46,7 +64,7 @@ export class CartService {
     this.totalQuantity = this.cartProducts.products.reduce((sum, current) => {
       return current.quantity + sum;
     }, 0);
-    this.cartProducts.totalPrice = this.totalPrice;
+    this.cartProducts.totalQuantity = this.totalQuantity;
     return this.totalQuantity;
   }
 
