@@ -1,16 +1,14 @@
-<h1>Products:</h1>
-
-<ul>
-    <li *ngFor="let product of products">
-        <strong>{{product.name}}</strong>
-        <div>
-            {{product.description}}
-        </div>
-        <div>
-            {{product.price | currency:'UAH'}}
-        </div>
-        <div *ngIf="product.isAvailable">
-            <small>Available</small>
-        </div>
-    </li>
-</ul> 
+<section class="products mb-5">
+  <h1 class="fs-5 text-secondary text-uppercase mb-4">
+    <i class="bi bi-columns-gap me-1 text-danger"></i>
+    Products
+  </h1>
+  <div class="row">
+    <div
+      *ngFor="let product of products"
+      class="col-sm-12 col-md-6 product-wrapper"
+    >
+      <app-product [product]="product" (addToCart)="handleAddToCart($event)"></app-product>
+    </div>
+  </div>
+</section>

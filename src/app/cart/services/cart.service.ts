@@ -1,35 +1,75 @@
 import { Injectable } from '@angular/core';
-import { Category } from 'src/app/products/models/category.enum';
+
 import { ProductModel } from 'src/app/products/models/product.model';
+import { CartItemModel } from '../models/cart-item.model';
+import { CartListModel } from '../models/cart-list.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-  cartProductsList: ProductModel[] = [
-    {
-      name: 'Apple iPhone 12 Pro Max',
-      description: 'Lorem ipsum dolor sit amet',
-      price: 50_000,
-      category: Category.iPhone,
-      isAvailable: true,
-      colors: ['Graphite', 'Pacific Blue', 'Silver', 'Gold'],
-      memory: [128, 256, 512]
-    },
-    {
-      name: 'Apple iPad Pro 4 12.9',
-      description: '2020 Wi-Fi 256GB Silver (MXAU2)',
-      price: 50_000,
-      category: Category.iPad,
-      isAvailable: true,
-      colors: ['Graphite', 'Pacific Blue', 'Silver', 'Gold'],
-      memory: [128, 256, 512]
-    }
-  ];
+  cartProducts: CartListModel = {
+    products: [],
+    totalPrice: 0,
+    totalQuantity: 0,
+  };
+  totalQuantity!: number;
+  totalPrice!: number;
 
-  constructor() { }
+  getCartProducts(): CartListModel {
+    return this.cartProducts;
+  }
 
-  getCartProducts() {
-    return this.cartProductsList;
+  addToCart(product: ProductModel): void {
+    let elInCartList = this.cartProducts.products.find(
+      (item) => item.name === product.name
+    );
+
+    elInCartList
+      ? elInCartList.quantity++
+      : this.cartProducts.products.push({
+          ...product,
+          quantity: 1,
+        });
+
+    this.getTotalValues();
+  }
+
+  increase(product: CartItemModel) {
+    product.quantity ++;
+    this.getTotalValues();
+  }
+
+  decrease(product: CartItemModel) {
+    product.quantity === 1 ? product.quantity = 1 : product.quantity --;
+    this.getTotalValues();
+  }
+
+  delete(product: CartItemModel) {
+    this.cartProducts.products = this.cartProducts.products.filter(
+      el => el.name != product.name
+    );
+    this.getTotalValues();
+  }
+
+  getTotalPrice(): number {
+    this.totalPrice = this.cartProducts.products.reduce((sum, current) => {
+      return current.price * current.quantity + sum;
+    }, 0);
+    this.cartProducts.totalPrice = this.totalPrice;
+    return this.totalPrice;
+  }
+
+  getTotalQuantity(): number {
+    this.totalQuantity = this.cartProducts.products.reduce((sum, current) => {
+      return current.quantity + sum;
+    }, 0);
+    this.cartProducts.totalQuantity = this.totalQuantity;
+    return this.totalQuantity;
+  }
+
+  getTotalValues(): void {
+    this.getTotalPrice();
+    this.getTotalQuantity();
   }
 }

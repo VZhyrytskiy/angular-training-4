@@ -2,24 +2,24 @@ import { Component, OnInit } from '@angular/core';
 
 enum Category {
   iPhone = 'iPhone',
-  iPad = 'iPad'
+  iPad = 'iPad',
 }
 
 @Component({
   selector: 'app-first',
   templateUrl: './first.component.html',
-  styleUrls: ['./first.component.scss']
+  styleUrls: ['./first.component.scss'],
 })
 export class FirstComponent implements OnInit {
   name!: string;
   description!: string;
-  price!: number
+  price!: number;
   category!: Category;
   isAvailable!: boolean;
   colors: String[] = ['Graphite', 'Pacific Blue', 'Silver', 'Gold'];
   memory: Number[] = [128, 256, 512];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.name = 'Apple iPhone 12 Pro Max';
@@ -28,5 +28,4 @@ export class FirstComponent implements OnInit {
     this.category = Category.iPhone;
     this.isAvailable = true;
   }
-
 }

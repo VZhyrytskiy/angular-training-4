@@ -1,23 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductModel } from 'src/app/products/models/product.model';
+
+import { CartItemModel } from '../../models/cart-item.model';
+import { CartListModel } from '../../models/cart-list.model';
 import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
-  styleUrls: ['./cart-list.component.scss']
+  styleUrls: ['./cart-list.component.scss'],
 })
 export class CartListComponent implements OnInit {
-  cartProductsList?: ProductModel[];
+  cartProducts!: CartListModel;
 
-  constructor(public cartService: CartService) { }
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    let rand = [true, false][Math.floor(Math.random()*2)];
-    rand ? this.cartProductsList = this.cartService.getCartProducts() : null;
+    this.getCartProducts();
   }
 
-  identify(index: number, item: { name: string }) {
-    return item.name; 
+  getCartProducts(): void {
+    this.cartProducts = this.cartService.getCartProducts();
+  }
+
+  identify(index: number, item: { name: string }): string {
+    return item.name;
+  }
+
+  handleIncrease(product: CartItemModel) {
+    this.cartService.increase(product);
+  }
+
+  handleDecrease(product: CartItemModel) {
+    this.cartService.decrease(product);
+  }
+
+  handleDelete(product: CartItemModel) {
+    this.cartService.delete(product);
   }
 }

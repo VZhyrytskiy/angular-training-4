@@ -1,0 +1,32 @@
+<div class="ms-2 me-auto">
+  <span class="fw-bold">
+    {{ product.name }}
+    <span class="badge bg-secondary">
+      {{ quantity }}
+      <span class="visually-hidden">unread messages</span>
+    </span>
+  </span>
+  <div class="text-secondary">{{ product.description }}</div>
+</div>
+<span class="me-auto">
+  <span class="text-muted font-monospace me-2">{{ product.price }} x {{ quantity }}</span>
+  <span class="badge bg-success">{{ product.price * quantity }}</span>
+</span>
+<div class="btn-group me-3" role="group" aria-label="Basic mixed styles example">
+  <button
+    type="button"
+    class="btn btn-outline-danger"
+    (click)="onDecrease(product)"
+    [class.disabled]="quantity < 2"
+  >
+    <i class="bi bi-dash-circle"></i>
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-success"
+    (click)="onIncrease(product)"
+  >
+    <i class="bi bi-plus-circle"></i>
+  </button>
+</div>
+<button type="button" class="btn btn-danger" (click)="onDelete(product)"><i class="bi bi-trash"></i></button>

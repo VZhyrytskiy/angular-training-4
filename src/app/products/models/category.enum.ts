@@ -1,4 +1,4 @@
 export enum Category {
-    iPhone = 'iPhone',
-    iPad = 'iPad'
+  iPhone = 'iPhone',
+  iPad = 'iPad',
 }

@@ -1,9 +1,38 @@
-<h1>Goods in cart:</h1>
-<div *ngIf="cartProductsList; else noGoods;">
-    <div *ngFor="let product of cartProductsList; index as i; trackBy:identify">
-        {{i+1   }}.{{product.name}}
-    </div>
-</div>
-<ng-template #noGoods>
-    <p>The cart is empty.</p>
-</ng-template>
+<section class="cart mb-5">
+  <h1 class="fs-5 text-secondary text-uppercase mb-4">
+    <i class="bi bi-basket me-1 text-danger"></i>
+    <span *ngIf="cartProducts.products.length">{{ cartProducts.totalQuantity }}</span>
+    Item(s) in cart
+    <span
+      class="text-success"
+      *ngIf="cartProducts.products.length"
+    >
+      Total Price: 
+      <span class="badge bg-danger rounded-pill">{{ cartProducts.totalPrice }}</span>
+    </span>
+  </h1>
+  <div *ngIf="cartProducts.products.length; else noGoods">
+    <ol class="list-group list-group-numbered">
+      <ng-container
+        *ngFor="let product of cartProducts.products;
+                index as i;
+                trackBy: identify;
+                let odd = odd"
+      >
+        <li class="list-group-item d-flex" [class.odd]="odd">
+          <app-cart-item
+            [product]="product"
+            [quantity]="product.quantity"
+            (increase)="handleIncrease($event)"
+            (decrease)="handleDecrease($event)"
+            (delete)="handleDelete($event)"
+            class="d-flex flex-fill justify-content-between align-items-center"
+          ></app-cart-item>
+        </li>
+      </ng-container>
+    </ol>
+  </div>
+  <ng-template #noGoods>
+    <div class="alert alert-warning" role="alert">The cart is empty</div>
+  </ng-template>
+</section>
