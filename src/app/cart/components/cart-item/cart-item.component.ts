@@ -20,9 +20,9 @@ export class CartItemComponent implements OnInit {
   @Input() product!: CartItemModel;
   @Input() quantity!: number;
 
-  @Output() increase = new EventEmitter();
-  @Output() decrease = new EventEmitter();
-  @Output() delete = new EventEmitter();
+  @Output() increase = new EventEmitter<CartItemModel>();
+  @Output() decrease = new EventEmitter<CartItemModel>();
+  @Output() delete = new EventEmitter<CartItemModel>();
 
   constructor(private cdr: ChangeDetectorRef) {}
 

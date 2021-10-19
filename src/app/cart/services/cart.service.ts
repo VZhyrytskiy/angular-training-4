@@ -10,6 +10,8 @@ import { CartListModel } from '../models/cart-list.model';
 export class CartService {
   cartProducts: CartListModel = {
     products: [],
+    // можно, например так:
+    // totals: [quantity: number; sum: number] = [0, 0];
     totalPrice: 0,
     totalQuantity: 0,
   };
